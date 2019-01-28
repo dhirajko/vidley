@@ -10,7 +10,7 @@ const mongoose=require('mongoose');
 
 const logger= require("./logger");                                      // require user define files              
 const genres= require("./router/genres")
-const customer=require("./router/Customer")
+const customer=require("./router/customer")
 
 const app=express();
 mongoose.connect('mongodb://localhost/vidly',{ useNewUrlParser: true })
