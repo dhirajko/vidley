@@ -11,7 +11,7 @@ const logger= require("./logger");                                      // requi
 const genres= require("./router/genres")
 
 const app=express();
-mongoose.connect('mongodb://localhost/vidly')
+mongoose.connect('mongodb://localhost/vidly',{ useNewUrlParser: true })
     .then(()=>{console.log('Connected to mongodb...')})
     .catch((err)=>{console.log('couldnot connect to Mongodb...');
     })
