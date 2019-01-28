@@ -7,8 +7,10 @@ const config=require("config");
 const mongoose=require('mongoose');
 
 
+
 const logger= require("./logger");                                      // require user define files              
 const genres= require("./router/genres")
+const customer=require("./router/Customer")
 
 const app=express();
 mongoose.connect('mongodb://localhost/vidly',{ useNewUrlParser: true })
@@ -25,6 +27,7 @@ app.use(helmet());
 
 app.use(logger);                                                            //sample user define middleware
 app.use('/api/genres',genres);
+app.use("/api/customer",customer);
 
 
 

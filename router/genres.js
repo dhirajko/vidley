@@ -43,7 +43,7 @@ router.post('/', async (req, res) => {
 })
 
 
-router.put(':id',async (req, res) => {     
+router.put('/:id',async (req, res) => {     
                                                                               //Steps for Put menthod           
     console.log(req.params.id);
     const {error }=validateGenre(req.body);                                                                                    // validate the input given
@@ -56,8 +56,8 @@ router.put(':id',async (req, res) => {
     res.send(genre);                                                                                    // save
 })
 
-router.delete(':id', async (req, res) => {            
-    const genre= await genres.findByIdAndRemove(req.params.id)                                         // check the items is available or not
+router.delete('/:id', async (req, res) => {            
+    const genre= await Genre.findByIdAndRemove(req.params.id)                                         // check the items is available or not
     if(!genre) return res.status(404).send(' The genere with given id is not found')
     res.send(genre);
 })
