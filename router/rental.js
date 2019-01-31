@@ -5,6 +5,8 @@ const { Customer } = require("../models/customer");
 const { Movie } = require('../models/movie');
 const {Rental,rentalValidator} =require('../models/rental')
 const fawn=require('fawn');
+
+
 fawn.init(mongoose);
 
 
@@ -62,6 +64,60 @@ router.post('/', async (req, res) => {
     }
     
 })
+
+router.put('/:id', async (req, res) => {
+
+    const { error } = rentalValidator(req.body);
+    if (error) return res.status(400).send(error.details[0].message)   
+
+    
+    const customer = await Customer.findById(req.body.customerId);
+    if (!customer) return res.status(400).send('Customer of this id is not found');
+
+    const movie = await Movie.findById(req.body.movieId);
+    if (!movie) return res.status(400).send(' The  movie with the given id is not found')     
+           
+
+    if (movie.numberInStock === 0) return res.send(' Movie not sufficient to rent')
+
+    const rental= await Rental.findById(req.params.id);
+    if(!rental) return res.status(400).send(" Movie of this id is not found")
+    
+    const prevMovie=await Movie.findById(rental.movie._id)
+    
+    
+
+
+    rental.customer={
+        isGold: customer.isGold,
+        _id: customer._id,
+        name: customer.name,
+        phone: customer.phone
+    }
+
+    rental.movie={
+        _id: movie.id,
+        title: movie.title,
+        dailyRentalRate: movie.dailyRentalRate
+    }
+    
+    await rental.save();
+    
+    movie.numberInStock--;
+    await movie.save();
+
+    prevMovie.numberInStock++;
+    prevMovie.save();
+      
+    
+    res.send(rental)
+     
+    
+})
+
+
+
+
 
 
 
