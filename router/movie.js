@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-const { validateMovie, movieSchema } = require('../models/movie');
-const { genreSchema } = require('../models/genre');
+const { validateMovie, Movie } = require('../models/movie');
+const { Genre } = require('../models/genre');
 
 
-const Movie = mongoose.model('Movie', movieSchema);
-const Genre = mongoose.model('Genre', genreSchema);
+
+
 
 router.get('/', async (req, res) => {
 
