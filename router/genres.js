@@ -1,9 +1,10 @@
 
 const express = require('express');
 const router = express.Router();
-const {Genre, validate}= require('../models/genre');
+const mongoose=require('mongoose');
+const { genreSchema, validate } = require('../models/genre');
 
-
+const Genre = mongoose.model('Genre', genreSchema);
 
 router.get('/', async (req, res) => {
     const genre = await Genre
@@ -35,9 +36,9 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     //Steps for Put menthod           
-    console.log(req.params.id);
+
     const { error } = validate(req.body);                                                                                    // validate the input given
-    console.log(req.params.id);
+
 
     if (error) return res.status(400).send(error.details[0].message);
 

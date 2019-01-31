@@ -10,7 +10,7 @@ const genreSchema = new mongoose.Schema({
     }
 
 })
-const Genre = mongoose.model('Genre', genreSchema);
+
 
 function validateGenre(genere) {                                                                //sample validation 
 
@@ -22,5 +22,5 @@ function validateGenre(genere) {                                                
 
 }
 
-exports.Genre = Genre;
+exports.genreSchema=genreSchema;
 exports.validate = validateGenre;
