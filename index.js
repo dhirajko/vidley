@@ -15,6 +15,7 @@ const genres= require("./router/genres")
 const customer=require("./router/customer")
 const movie=require('./router/movie')
 const rental=require('./router/rental')
+const users=require('./router/user')
 
 
 const app=express();
@@ -33,8 +34,9 @@ app.use(helmet());
 app.use(logger);                                                            //sample user define middleware
 app.use('/api/genres',genres);
 app.use("/api/customer",customer);
-app.use("/api/movie",movie)
-app.use ('/api/rental',rental)
+app.use("/api/movie",movie);
+app.use ('/api/rental',rental);
+app.use('/api/users',users);
 
 
 
