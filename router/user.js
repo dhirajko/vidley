@@ -5,7 +5,7 @@ const  bcrypt=require('bcrypt');
 const express = require('express');
 const router = express.Router();
 const _=require('lodash');                                  // _lodash is library for pickup from object
-
+const jwt = require('jsonwebtoken');
 
 router.post('/', async (req, res) => {
  
@@ -20,8 +20,9 @@ router.post('/', async (req, res) => {
     user.password=await bcrypt.hash(user.password,salt,);
     
     await user.save();
-
-    res.send(_.pick(user,['_id','name','email']))
+    
+    const token =jwt.sign({_id: user._id},process.env.JWT_PRIVATE_KEY);
+    res.header('x-auth-token',token).send(_.pick(user,['_id','name','email']))
     
 });
 
