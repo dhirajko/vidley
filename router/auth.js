@@ -8,7 +8,7 @@ const _=require('lodash');                                  // _lodash is librar
 const jwt = require('jsonwebtoken');
 const config=require('config')
 
-router.post('/', async (req, res) => {
+router.post('/', async (req, res) => {                                    //loging in user
  
     const { error } = validateAuth(req.body); 
     if (error) return res.status(400).send(error.details[0].message);
@@ -19,7 +19,8 @@ router.post('/', async (req, res) => {
     const validPassword=await bcrypt.compare(req.body.password, user.password);
     if(!validPassword) return res.status(400).send('invalid email or password')
      
-    const token =jwt.sign({_id: user._id},process.env.JWT_PRIVATE_KEY);
+
+    const token =user.generateAuthToken();
     res.send(token);
 });
 
