@@ -3,6 +3,7 @@ const Joi = require('joi')
 const router = express.Router();
 const {Customer, validate}=require("../models/customer");
 
+
 router.get('/', async (req, res) => {
     const customer = await Customer
         .find()

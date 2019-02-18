@@ -1,3 +1,4 @@
+require('express-async-errors')
 const express = require('express');                                   //required import of node installed packages and dependies
 const helmet = require('helmet')
 const morgan = require('morgan');
@@ -9,6 +10,7 @@ const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi);                            // To validater object id
 require('dotenv').config();
 
+const error=require('./middleware/error')
 const logger = require("./logger");                                      // require user define files              
 const genres = require("./router/genres")
 const customer = require("./router/customer")
@@ -35,7 +37,7 @@ app.use(express.static("public"));
 app.use(helmet());
 
 
-console.log(process.env.JWT_PRIVATE_KEY);
+
 
 
 // if (!config.get('jwtPrivateKey')) {
@@ -55,7 +57,7 @@ app.use('/api/rental', rental);
 app.use('/api/users', users);
 app.use('/api/auth', auth)
 
-
+app.use(error)
 
 //console.log("Application  Name "+ config.get("name"));                  //use of config to see the environment setup
 //console.log("Mail Server "+ config.get("mail.host"));
