@@ -6,6 +6,7 @@ const startupDebugger = require('debug')('app:startup');
 const dbDebugger = require('debug')('app:db');
 const config = require("config");
 const mongoose = require('mongoose');
+const winston=require('winston');
 const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi);                            // To validater object id
 require('dotenv').config();
@@ -31,10 +32,12 @@ mongoose.connect('mongodb://localhost/vidly', { useNewUrlParser: true })
     })
 
 
+   
 app.use(express.json());                                                //Application defind middleware in expressjs
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(helmet());
+
 
 
 

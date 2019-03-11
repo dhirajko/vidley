@@ -5,6 +5,8 @@ const {Customer, validate}=require("../models/customer");
 
 
 router.get('/', async (req, res) => {
+
+throw new Error('could not get genre')
     const customer = await Customer
         .find()
         .sort({ name: 1 });
