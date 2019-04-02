@@ -32,4 +32,6 @@ Please make sure python and pip  has been installed on the machine first!
 Now you can use the backend with postman or browser :)
 
 ```
+### Deployment Link
+https://vidly-movie-renting.herokuapp.com
 
