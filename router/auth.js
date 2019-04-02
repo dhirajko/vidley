@@ -1,7 +1,7 @@
 
 const {User} = require('../models/user');
 const Joi = require('joi');
-const  bcrypt=require('bcrypt');
+const  bcrypt=require('bcryptjs');
 const express = require('express');
 const router = express.Router();
 const _=require('lodash');                                  // _lodash is library for pickup from object
