@@ -72,11 +72,16 @@ app.use(error)
 // console.log(`${process.env.NODE_ENV}`);
 // console.log(`app: ${app.get("env")}`);                                   //return current environment
 
-if (app.get("env") == "development") {
-    app.use(morgan("tiny"));
-    console.log("morgan enabled");                                      // log request
+// if (app.get("env") == "development") {
+//     app.use(morgan("tiny"));
+//     console.log("morgan enabled");                                      // log request
 
-}
+// }
+app.get('/', async (req, res) => {
+    
+    res.send("this is test api")
+
+})
 
 
 const port = process.env.PORT || 3000
