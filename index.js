@@ -25,7 +25,7 @@ const auth = require('./router/auth')
 
 
 const app = express();
-mongoose.connect('mongodb://localhost/vidly', { useNewUrlParser: true })
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true })
     .then(() => { console.log('Connected to mongodb...') })
     .catch((err) => {
         console.log('couldnot connect to Mongodb...');
