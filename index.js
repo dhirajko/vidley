@@ -84,6 +84,4 @@ app.get('/', async (req, res) => {
 })
 
 
-app.listen(config.port, function () {
-    console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
-  });
+app.listen(process.env.PORT, '0.0.0.0')
