@@ -6,12 +6,12 @@ const startupDebugger = require('debug')('app:startup');
 const dbDebugger = require('debug')('app:db');
 const config = require("config");
 const mongoose = require('mongoose');
-const winston=require('winston');
+const winston = require('winston');
 const Joi = require('joi');
 Joi.objectId = require('joi-objectid')(Joi);                            // To validater object id
 require('dotenv').config();
 
-const error=require('./middleware/error')
+const error = require('./middleware/error')
 const logger = require("./logger");                                      // require user define files              
 const genres = require("./router/genres")
 const customer = require("./router/customer")
@@ -32,7 +32,7 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true })
     })
 
 
-   
+
 app.use(express.json());                                                //Application defind middleware in expressjs
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -78,7 +78,7 @@ app.use(error)
 
 // }
 app.get('/', async (req, res) => {
-    
+
     res.send("this is test api")
 
 })
