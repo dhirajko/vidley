@@ -36,43 +36,46 @@ Now you can use the backend with postman or browser :)
 https://vidly-movie-renting.herokuapp.com
 
 ## Api
-Create User  [POST]: http://vidly-movie-renting.herokuapp.com/api/users
-        ```        
+```
+ Create User
+ [POST]: http://vidly-movie-renting.herokuapp.com/api/users
+              
         {
             "name": "user",
             "email": "user@admin.com",
             "password": "password",
             "isAdmin" : true
         }
-        ```
-
-Login User  [POST]: http://vidly-movie-renting.herokuapp.com/api/auth
-        ```        
+        
+```
+``` 
+Login User 
+[POST]: http://vidly-movie-renting.herokuapp.com/api/auth
+               
         {
             "email": "user@admin.com",
-            "password": "password"           
-        }
-        ```
-        Header : 
-        x-auth-token : eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2E0YzA3MmIyNjU0MTU0OTE1NDg4MTciLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE1NTQzMDE5Njh9.lZ3IgHw31z2H2BwjIRtc8OVvOc1i8WgVt1wQbRJPXWs
+            "password": "password" 
+        }            
+       
+Header response
+ x-auth-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Y2E0YzA3MmIyNjU0MTU0OTE1NDg4MTciLCJpc0FkbWluIjp
+            0cnVlLCJpYXQiOjE1NTQzMDE5Njh9.lZ3IgHw31z2H2BwjIRtc8OVvOc1i8WgVt1wQbRJPXWs
 
 
         You will get x-auth-token in header when authentication is successful. Use this token for requestin  all route which require authentication
-
+ }
+  ```      
 Genres :
 
+```
     [GET] : http://vidly-movie-renting.herokuapp.com/api/genres         // get all genre
     [POST] : http://vidly-movie-renting.herokuapp.com/api/genres        // create new genre
             
-            ```
             {"name":"Horror"}
-            ``` 
-            
-
-    [PUT]: http://vidly-movie-renting.herokuapp.com/api/genres/5ca4c609029cd80017faa5f9          //edit genre of given id
-            
-            ```
+                  
+    [PUT]: http://vidly-movie-renting.herokuapp.com/api/genres/5ca4c609029cd80017faa5f9      //edit genre of given id
+ 
             {"name":"Comedy"}
-            ``` 
-    [DELETE]: http://vidly-movie-renting.herokuapp.com/api/genres/5ca4c609029cd80017faa5f9         //delete the genre of given id
-
+            
+    [DELETE]: http://vidly-movie-renting.herokuapp.com/api/genres/5ca4c609029cd80017faa5f9    //delete the genre of given id
+```
